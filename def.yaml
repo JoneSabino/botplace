@@ -16,7 +16,9 @@ info:
   
 tags:
   - name: Definition
+    description: Recursos relacionados às definições(configurações individuais) do cliente
   - name: Task
+    description: Recursos relacionados às instancias dos robôs do cliente
 externalDocs:
   description: Saiba mais
   url: http://prime.readthedocs.io
