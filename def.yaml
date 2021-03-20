@@ -86,11 +86,11 @@ components:
           description: mensagem de erro, se houver      
   parameters:
     task_idParam:
-      - in: path
-        name: task_id
-        schema:
-          type: string
-        required: False
+      in: path
+      name: task_id
+      schema:
+        type: string
+      required: False
 
 paths:
   /definition:
