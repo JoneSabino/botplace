@@ -22,9 +22,6 @@ externalDocs:
   url: http://prime.readthedocs.io
 servers:
   - url: "https://kqe9jp3br0.execute-api.us-east-2.amazonaws.com/{basePath}"
-variables:
-  basePath:
-    default: "prod"
 
 components:
   schemas:
