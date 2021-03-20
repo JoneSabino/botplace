@@ -79,7 +79,7 @@ components:
           type: string
           format: date-time
           description: data e hora de termino
-        status:
+        status:  
           type: string
           enum:
            - running
@@ -102,6 +102,7 @@ paths:
     get:
       tags:
         - Definition
+      operationId: clientDefinition
       responses:
         "200":
           description: "200 response"
@@ -110,21 +111,22 @@ paths:
               schema:
                 $ref: "#/components/schemas/task_config_response"    
     patch:
-        tags:
-          - Definition
-        requestBody:
+      tags:
+        - Definition
+      operationId: changeClientDefinition
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/task_schedule"
+        required: true
+      responses:
+        "200":
+          description: "200 response"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/task_schedule"
-          required: true
-        responses:
-          "200":
-            description: "200 response"
-            content:
-              application/json:
-                schema:
-                  $ref: "#/components/schemas/task_response"
+                $ref: "#/components/schemas/task_response"
 
                 
   /task/start:
