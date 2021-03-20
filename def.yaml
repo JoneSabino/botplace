@@ -1,1 +1,211 @@
+openapi: "3.0.n"
+info:
+  description: "Versão em desenvolvimento da API de consulta de faturas da Prime Control. \n\n
+    Saiba mais sobre a Prime Control em [https://primecontrol.com.br](https://primecontrol.com.br)."
+  version: "0.0.1"
+  title: "BotPlace API"
+  termsOfService: https://primecontrol.com.br
+  contact:
+     email: jones.sabino@primecontrol.com.br
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+tags:
+  - name: Definition
+  - name: Task
+    description: 
+    externalDocs:
+      description: Saiba mais
+      url: http://prime.readthedocs.io
+#   - name: Empresa
+#     description: Dono das faturas
+#   - name: Consumidor
+#     description: Consumidor debaixo da empresa
+#     externalDocs:
+#       description: Saiba mais
+#       url: http://prime.readthedocs.io
+#servers:
+#  - url: "https://kqe9jp3br0.execute-api.us-east-2.amazonaws.com/{basePath}"
+#  variables:
+#    basePath:
+#      default: "prod"
 
+components:
+  schemas:
+    task_start:
+      type: object
+      properties:
+        task_name:
+          type: string
+        config:
+          type: object
+    task_stop:
+      type: object
+      properties:
+        task_id:
+          type: string
+    task_config:
+      type: object
+      properties:
+        task_id:
+          type: string
+    task_config_response:
+      type: object
+      properties:
+        config:
+          type: object
+    task_schedule:
+      type: object
+      properties:
+        cron_exp:
+          type: string
+          example: 0 12 ? * FRI *
+          description: www.cronmaker.com (ignorar o primeiro 0 da expressão)
+    task_response:
+      type: object
+      properties:
+        task_id:
+          type: string
+    task_metadata:
+      type: object
+      properties:
+        task_name:
+          type: string
+        config:
+          type: object
+        started:
+          type: string
+          format: date-time
+          description: data e hora de inicio
+        finished:
+          type: string
+          format: date-time
+          description: data e hora de termino
+        status:
+          type: string
+          enum:
+           - running
+           - completed
+           - failed
+           - stopped
+        error_msg:
+          type: string
+          description: mensagem de erro, se houver      
+  parameters:
+    task_id:
+      type: string
+      
+paths:
+  /definition:
+  get:
+    tags:
+      - Definition
+    responses:
+      "200":
+        description: "200 response"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/task_config_response"    
+  patch:
+      tags:
+        - Definition
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/task_schedule"
+        required: true
+      responses:
+        "200":
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/task_response"
+                
+                
+  /task/start:
+    post:
+      tags:
+        - Task
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/task_start"
+        required: true
+      responses:
+        "200":
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/task_response"
+  
+  /task/stop:
+    post:
+      tags:
+        - Task
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/task_stop"
+        required: true
+      responses:
+        "200":
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/task_response"
+                
+ 
+  /task/{task_id}/config/:
+    get:
+      tags:
+        - Task
+      parameters:
+       - $ref: '#/components/parameters/task_id'
+      responses:
+        "200":
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/task_config_response"
+
+  
+  /task/config/schedule:
+    patch:
+      tags:
+        - Task
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/task_schedule"
+        required: true
+      responses:
+        "200":
+          description: "200 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/task_response"
+ 
+  /task/{task_id}:
+   get:
+     tags:
+      - Task
+     parameters:
+       - $ref: '#/components/parameters/task_id'
+     responses:
+       "200":
+         description: "200 response"
+         content:
+           application/json:
+             schema:
+               $ref: "#/components/schemas/task_metadata"
+               
