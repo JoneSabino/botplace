@@ -85,12 +85,13 @@ components:
           type: string
           description: mensagem de erro, se houver      
   parameters:
-    - in: path
-      name: task_id
-      schema:
-        type: string
-      required: False
-      
+    task_idParam:
+      - in: path
+        name: task_id
+        schema:
+          type: string
+        required: False
+
 paths:
   /definition:
     get:
@@ -163,7 +164,7 @@ paths:
       tags:
         - Task
       parameters:
-       - $ref: '#/components/parameters/task_id'
+       - $ref: '#/components/parameters/task_idParam'
       responses:
         "200":
           description: "200 response"
@@ -196,7 +197,7 @@ paths:
      tags:
       - Task
      parameters:
-       - $ref: '#/components/parameters/task_id'
+       - $ref: '#/components/parameters/task_idParam'
      responses:
        "200":
          description: "200 response"
