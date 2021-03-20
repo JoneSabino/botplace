@@ -93,33 +93,33 @@ components:
       
 paths:
   /definition:
-  get:
-    tags:
-      - Definition
-    responses:
-      "200":
-        description: "200 response"
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/task_config_response"    
-  patch:
+    get:
       tags:
         - Definition
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/task_schedule"
-        required: true
       responses:
         "200":
           description: "200 response"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/task_response"
-                
+                $ref: "#/components/schemas/task_config_response"    
+    patch:
+        tags:
+          - Definition
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/task_schedule"
+          required: true
+        responses:
+          "200":
+            description: "200 response"
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/task_response"
+
                 
   /task/start:
     post:
