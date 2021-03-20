@@ -92,8 +92,11 @@ components:
           type: string
           description: mensagem de erro, se houver      
   parameters:
-    task_id:
-      name: test
+    - in: path
+      name: task_id
+      schema:
+        type: string
+      required: False
       
 paths:
   /definition:
