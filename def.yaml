@@ -103,6 +103,7 @@ paths:
       tags:
         - Definition
       operationId: clientDefinition
+      summary: Recupera as definições atuais do cliente
       responses:
         "200":
           description: "200 response"
@@ -114,6 +115,7 @@ paths:
       tags:
         - Definition
       operationId: changeClientDefinition
+      summary: Altera as definições do cliente
       requestBody:
         content:
           application/json:
@@ -134,6 +136,7 @@ paths:
       tags:
         - Task
       operationId: startTask
+      summary: Inicia a Execução do robô
       requestBody:
         content:
           application/json:
@@ -153,6 +156,7 @@ paths:
       tags:
         - Task
       operationId: stopTask
+      summary: Para a execução do robô
       requestBody:
         content:
           application/json:
@@ -173,6 +177,7 @@ paths:
       tags:
         - Task
       operationId: configTest
+      summary: Recupera as configurações da execução atual
       parameters:
        - $ref: '#/components/parameters/task_idParam'
       responses:
@@ -189,6 +194,7 @@ paths:
       tags:
         - Task
       operationId: scheduleTask
+      summary: Altera as configurações de agendamento do robô
       requestBody:
         content:
           application/json:
@@ -208,6 +214,7 @@ paths:
      tags:
       - Task
      operationId: task
+     summary: Recupera informações sobre as execuções atuais
      parameters:
        - $ref: '#/components/parameters/task_idParam'
      responses:
