@@ -13,10 +13,10 @@ info:
 tags:
   - name: Definition
   - name: Task
-    description: 
-    externalDocs:
-      description: Saiba mais
-      url: http://prime.readthedocs.io
+description: 
+externalDocs:
+  description: Saiba mais
+  url: http://prime.readthedocs.io
 #   - name: Empresa
 #     description: Dono das faturas
 #   - name: Consumidor
@@ -93,7 +93,7 @@ components:
           description: mensagem de erro, se houver      
   parameters:
     task_id:
-      type: string
+      name: test
       
 paths:
   /definition:
