@@ -10,7 +10,7 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   x-logo:
-    url: 'https://redocly.github.io/openapi-template/logo.png'
+    url: 'https://github.com/JoneSabino/botplace/blob/0678f792d0054e6dfd23fffee1ecfa985e1ebc6b/Logo_Normal%20vertical.png'
   description: Versão em desenvolvimento da API de consulta de faturas da Prime Control. \n\n 
                Saiba mais sobre a Prime Control em [https://primecontrol.com.br](https://primecontrol.com.br).
   
